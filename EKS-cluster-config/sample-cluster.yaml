@@ -9,3 +9,4 @@ managedNodeGroups:
   - name: spot
     instanceType: m5.large
     desiredCapacity: 3
+    spot: true
