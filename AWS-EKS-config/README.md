@@ -80,6 +80,8 @@ This setup provisions an EC2 instance as an EKS workstation. The instance is pre
    terraform init
    terraform apply
    ```
+   <img src="./images/input.png" alt="Getting started" />
+
 4. SSH into the instance and verify the tools:
    ```bash
    git --version
