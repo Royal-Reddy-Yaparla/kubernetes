@@ -1,0 +1,3 @@
+# to login container
+
+kubectl exec -n robokart -it myapp -c almalinux -- bash
