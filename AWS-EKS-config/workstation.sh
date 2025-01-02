@@ -1,4 +1,9 @@
 #!/bin/bash
+###############################################
+# Author: ROYAL REDDY
+# Version: V1
+# Purpose: utils,git,docker,docker-compose,eksctl,kubectl installation
+################################################
 
 ID=$(id -u)
 R="\e[31m"
