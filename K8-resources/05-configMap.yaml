@@ -5,5 +5,5 @@ metadata:
   namespace: robokart
 data:
   APP_NAME: "nginx-latest"
-  APP_VERSION: "2.0.0"
+  APP_VERSION: "1.0.0"
   DATABASE_URL: "mysql://db.example.com:3306"
