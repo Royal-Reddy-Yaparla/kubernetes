@@ -21,17 +21,17 @@ spec:
       - name: app_name
         valueFrom: 
           configMapKeyRef:
-            name: APP_NAME
+            name: app-name
             key: app_name
-      - name: app_version
+      - name: robokart
         valueFrom: 
           configMapKeyRef:
-            name: APP_VERSION
+            name: app-version
             key: app_version
       - name: database_url
         valueFrom: 
           configMapKeyRef:
-            name: DATABASE_URL
+            name: database-url
             key: database_url
     ports:
       - containerPort: 80
