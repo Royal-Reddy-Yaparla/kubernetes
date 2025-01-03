@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+  namespace: robokart
+  labels:
+    environment: dev
+    app: frontend
+spec:
+  containers:
+  - name: nginx
+    image: nginx:latest
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "300m"
+      limits:
+        memory: "1024Mi"
+        cpu: "500m"
+    env:
+      - name: app_name
+        valueFrom: 
+          configMapKeyRef:
+            name: APP_NAME
+            key: app_name
+      - name: app_version
+        valueFrom: 
+          configMapKeyRef:
+            name: APP_VERSION
+            key: app_version
+      - name: database_url
+        valueFrom: 
+          configMapKeyRef:
+            name: DATABASE_URL
+            key: database_url
+    ports:
+      - containerPort: 80

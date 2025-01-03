@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: robokart-pod
+  namespace: robokart
+data:
+  app_name: "nginx"
+  app_version: "1.0.0"
+  database_url: "mysql://db.example.com:330"
