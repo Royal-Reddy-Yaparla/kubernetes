@@ -21,7 +21,7 @@ spec:
       - name: app_name
         valueFrom: 
           configMapKeyRef:
-            name: robokart-pod
+            name: robokart-pod # must match configMap define name
             key: APP_NAME
       - name: robokart
         valueFrom: 
