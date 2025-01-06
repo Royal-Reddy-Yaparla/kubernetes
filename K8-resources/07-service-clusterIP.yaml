@@ -29,6 +29,6 @@ spec:
     name: nginx-service
     app: frontend
   ports:
-  - name: name-of-service-port
-    port: 80
-    targetPort: 80
+  - protocol: TCP
+    port: 80 #service-port
+    targetPort: 80 #service-port
