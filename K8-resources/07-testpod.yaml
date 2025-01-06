@@ -1,11 +1,10 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx-testing
+  name: myapp
   namespace: robokart
 spec:
   containers:
-  - name: nginx
-    image: nginx:1.14.2
-    ports:
-    - containerPort: 80
+  - name: almalinux
+    image: almalinux:8
+    command: ["sleep","300"]
