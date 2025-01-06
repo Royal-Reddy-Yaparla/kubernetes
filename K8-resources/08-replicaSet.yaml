@@ -13,7 +13,6 @@ spec:
       app: frontend
   template:
     metadata:
-      namespace: robokart
       labels:
         name: nginx
         app: frontend
