@@ -2,17 +2,18 @@ apiVersion: app/v1
 kind: ReplicaSet
 metadata:
   name: myreplicaset
-  labels:
+  labels: # replica-set labels
     name: nginx-replicas
+    app: frontend
 spec:
   replicas: 3
   selector:
-    matchLabels:
-      name: nginx
+    matchLabels: # replica-set labels
+      name: nginx-replicas
       app: frontend
   template:
     metadata:
-      labels:
+      labels: # pod labels
         name: nginx
         app: frontend
     spec:
