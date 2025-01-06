@@ -2,9 +2,9 @@ apiVersion: app/v1
 kind: ReplicaSet
 metadata:
   name: myreplicaset
+  namespace: robokart
   labels:
     name: nginx-replicas
-    app: frontend
 spec:
   replicas: 3
   selector:
@@ -13,6 +13,7 @@ spec:
       app: frontend
   template:
     metadata:
+      namespace: robokart
       labels:
         name: nginx
         app: frontend
