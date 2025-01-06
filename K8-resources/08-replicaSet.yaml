@@ -9,7 +9,7 @@ metadata:
 spec:
   replicas: 3
   selector:
-    matchLabels: # replica-set labels
+    matchLabels: # replica-set labels , should match with pod labels
       name: nginx-pod
       app: frontend
   template: # pod defination
