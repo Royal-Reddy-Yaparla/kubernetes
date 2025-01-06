@@ -10,12 +10,12 @@ spec:
   replicas: 3
   selector:
     matchLabels: # deployment-set labels
-      name: nginx-deployment
+      name: nginx-replicas
       app: frontend
   template: # pod defination
     metadata:
       labels: # pod labels
-        name: nginx-deployment
+        name: nginx-replicas
         app: frontend
     spec:
       containers:
