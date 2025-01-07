@@ -33,13 +33,6 @@ spec:
       - name: catalogue
         image: iamroyalreddy/catalogue:v1
         imagePullPolicy: Always
-        resources:
-          requests:
-            memory: "256Mi"
-            cpu: "300m"
-          limits:
-            memory: "512Mi"
-            cpu: "500m"
         envFrom:
         - configMapRef:
             name: catalogue
