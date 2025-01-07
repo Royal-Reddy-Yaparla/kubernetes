@@ -121,7 +121,8 @@ spec:
         image: iamroyalreddy/web:v1
         imagePullPolicy: Always
         volumeMounts:
-          - mountPath: /etc/nginx/nginx.conf
+          - name: nginx-conf
+            mountPath: /etc/nginx/nginx.conf
             subPath: nginx.conf
             readOnly: true  
       volumes:
