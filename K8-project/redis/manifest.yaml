@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis
+  namespace: robokart 
+  labels:
+    name: redis
+    project: robokart
+    tier: db 
+spec:
+  replicas: 1
+  selector:
+    matchLabels: # should match with pod
+      name: redis
+      project: robokart
+      tier: db
+  template: # pod defination
+    metadata:
+      labels: # pod labels
+        name: redis
+        project: robokart
+        tier: db
+    spec:
+      containers:
+      - name: redis
+        image: redis
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis
+  namespace: robokart
+spec:
+  selector:
+    name: redis
+    project: robokart
+    tier: db 
+  ports:
+  - protocol: TCP
+    port: 6379 #service-port
+    targetPort: 6379 #container-port
