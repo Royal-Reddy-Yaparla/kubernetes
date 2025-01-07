@@ -24,6 +24,7 @@ spec:
       containers:
       - name: mongodb
         image: iamroyalreddy/mongodb:v1
+        imagePullPolicy: Always
 ---
 apiVersion: v1
 kind: Service

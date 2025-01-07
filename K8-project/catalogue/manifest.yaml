@@ -32,6 +32,7 @@ spec:
       containers:
       - name: catalogue
         image: iamroyalreddy/catalogue:v1
+        imagePullPolicy: Always
         resources:
           requests:
             memory: "256Mi"
