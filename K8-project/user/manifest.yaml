@@ -1,0 +1,53 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: user
+  namespace: robokart
+data:
+  MONGO: "true"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user
+  namespace: robokart 
+  labels:
+    name: user
+    project: robokart
+    tier: app 
+spec:
+  replicas: 1
+  selector:
+    matchLabels: # deployment-set labels
+      name: user
+      project: robokart
+      tier: app
+  template: # pod defination
+    metadata:
+      labels: # pod labels
+        name: user
+        project: robokart
+        tier: app
+    spec:
+      containers:
+      - name: user
+        image: iamroyalreddy/user:v1
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: user
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user
+  namespace: robokart
+spec:
+  selector:
+    name: user
+    project: robokart
+    tier: app 
+  ports:
+  - protocol: TCP
+    port: 8080 #service-port
+    targetPort: 8080 #container-port
