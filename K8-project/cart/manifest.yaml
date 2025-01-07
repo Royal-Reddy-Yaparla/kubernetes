@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: robokart-pod
+  namespace: robokart
+data:
+  MONGO: ""
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart-deployment
+  namespace: robokart 
+  labels:
+    name: cart-deployment
+    project: robokart
+    tier: app 
+spec:
+  replicas: 3
+  selector:
+    matchLabels: # deployment-set labels
+      name: cart
+      project: robokart
+      tier: app
+  template: # pod defination
+    metadata:
+      labels: # pod labels
+        name: cart
+        project: robokart
+        tier: app
+    spec:
+      containers:
+      - name: cart
+        image: iamroyalreddy/cart:v1
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "300m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+  namespace: robokart
+spec:
+  selector:
+    name: cart-service
+    project: robokart
+    tier: app 
+  ports:
+  - protocol: TCP
+    port: 8080 #service-port
+    targetPort: 8080 #container-port

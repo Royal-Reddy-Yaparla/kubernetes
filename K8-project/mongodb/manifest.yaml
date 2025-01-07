@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb
+  namespace: robokart 
+  labels:
+    name: mongodb
+    project: robokart
+    tier: db 
+spec:
+  replicas: 1
+  selector:
+    matchLabels: # should match with pod
+      name: mongodb
+      project: robokart
+      tier: db
+  template: # pod defination
+    metadata:
+      labels: # pod labels
+        name: mongodb
+        project: robokart
+        tier: db
+    spec:
+      containers:
+      - name: mongodb
+        image: iamroyalreddy/mongodb:v1
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+  namespace: robokart
+spec:
+  selector:
+    name: mongodb
+    project: robokart
+    tier: db 
+  ports:
+  - protocol: TCP
+    port: 27017 #service-port
+    targetPort: 27017 #container-port
