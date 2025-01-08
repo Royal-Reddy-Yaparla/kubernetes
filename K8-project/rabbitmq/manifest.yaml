@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbitmq
+  namespace: robokart 
+  labels:
+    name: rabbitmq
+    project: robokart
+    tier: db 
+spec:
+  replicas: 1
+  selector:
+    matchLabels: # should match with pod
+      name: rabbitmq
+      project: robokart
+      tier: db
+  template: # pod defination
+    metadata:
+      labels: # pod labels
+        name: rabbitmq
+        project: robokart
+        tier: db
+    spec:
+      containers:
+      - name: rabbitmq
+        image: rabbitmq
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rabbitmq
+  namespace: robokart
+spec:
+  selector:
+    name: rabbitmq
+    project: robokart
+    tier: db 
+  ports:
+  - protocol: TCP
+    port: 5672 #service-port
+    targetPort: 5672 #container-port
