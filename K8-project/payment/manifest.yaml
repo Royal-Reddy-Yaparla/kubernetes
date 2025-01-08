@@ -12,28 +12,28 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: payment
-  namespace: robokart 
-  labels:
-    name: payment
+  namespace: robokart
+  labels: # these labels are deployment labels
+    app: payment
     project: robokart
-    tier: app 
+    tier: app
 spec:
   replicas: 1
   selector:
-    matchLabels: # deployment-set labels
-      name: payment
+    matchLabels: # these labels are used to find the pods
+      app: payment
       project: robokart
       tier: app
-  template: # pod defination
+  template:
     metadata:
-      labels: # pod labels
-        name: payment
+      labels: # these labels are pod labels
+        app: payment
         project: robokart
         tier: app
     spec:
       containers:
       - name: payment
-        image: iamroyalreddy/payment:v1
+        image: joindevops/payment:v1
         imagePullPolicy: Always
         envFrom:
         - secretRef:
@@ -46,9 +46,9 @@ metadata:
   namespace: robokart
 spec:
   selector:
-    name: payment
+    app: payment
     project: robokart
-    tier: app 
+    tier: app
   ports:
   - protocol: TCP
     port: 8080 #service-port
