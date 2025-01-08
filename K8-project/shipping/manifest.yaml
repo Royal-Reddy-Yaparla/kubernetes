@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shipping
+  namespace: robokart
+data:
+  CART_ENDPOINT: "cart:8080"
+  DB_HOST: "mysql"
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+  namespace: robokart 
+  labels:
+    name: shipping
+    project: robokart
+    tier: app 
+spec:
+  replicas: 1
+  selector:
+    matchLabels: # deployment-set labels
+      name: shipping
+      project: robokart
+      tier: app
+  template: # pod defination
+    metadata:
+      labels: # pod labels
+        name: shipping
+        project: robokart
+        tier: app
+    spec:
+      containers:
+      - name: shipping
+        image: iamroyalreddy/shipping:v1
+        imagePullPolicy: Always
+        envFrom:
+        - configMapRef:
+            name: shipping
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping
+  namespace: robokart
+spec:
+  selector:
+    name: shipping
+    project: robokart
+    tier: app 
+  ports:
+  - protocol: TCP
+    port: 8080 #service-port
+    targetPort: 8080 #container-port

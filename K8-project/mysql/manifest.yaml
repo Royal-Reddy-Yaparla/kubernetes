@@ -1,0 +1,66 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql
+  namespace: robokart
+data:
+  MYSQL_DATABASE: "cities"
+---
+apiVersion: v1
+kind: Secret
+metadata:
+  name: mysql
+  namespace: robokart
+type: Opaque
+data:
+  MYSQL_ROOT_PASSWORD: Um9ib1Nob3BAMQ==
+  MYSQL_PASSWORD: Um9ib1Nob3BAMQ==
+  MYSQL_USER: c2hpcHBpbmc= 
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: robokart 
+  labels:
+    name: mysql
+    project: robokart
+    tier: db 
+spec:
+  replicas: 1
+  selector:
+    matchLabels: # should match with pod
+      name: mysql
+      project: robokart
+      tier: db
+  template: # pod defination
+    metadata:
+      labels: # pod labels
+        name: mysql
+        project: robokart
+        tier: db
+    spec:
+      containers:
+      - name: mysql
+        image: iamroyalreddy/mysql:v1
+        imagePullPolicy: Always
+        envFrom:
+          - secretRef:
+              name: mysql
+          - configMapRef:
+              name: mysql
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: robokart
+spec:
+  selector:
+    name: mysql
+    project: robokart
+    tier: db 
+  ports:
+  - protocol: TCP
+    port: 3306 #service-port
+    targetPort: 3306 #container-port
