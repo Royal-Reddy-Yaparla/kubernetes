@@ -73,12 +73,12 @@ This project demonstrates the deployment of a complete e-commerce system called 
 
 ### **How to Deploy**
 1. **Clone the Repositories**
+
    Clone each component's repository and navigate to the directory containing the manifest files.
 
 2. **Create the Namespace and make as default namespace**
     ```bash
     kubectl apply -f namespace.yaml
-    kubens robokart
     ```
     Configured `kubens` to set the default namespace as `robokart` for efficient operations.
 
