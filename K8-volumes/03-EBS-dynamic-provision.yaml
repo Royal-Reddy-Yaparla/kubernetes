@@ -1,36 +1,21 @@
 apiVersion: v1
-kind: PersistentVolume
-metadata:
-  name: ebs-static
-spec:
-  accessModes:
-  - ReadWriteOnce #EBS volume should have readwriteonce, because it HD.
-  capacity:
-    storage: 10Gi
-  csi:
-    driver: ebs.csi.aws.com
-    fsType: ext4
-    volumeHandle: vol-095b046ae862ee1ff # AWS EBS volume ID
----
-apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: ebs-static
+  name: ebs-dynamic
 spec:
-  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set. for static provisioning this is empty
-  volumeName: ebs-static
   accessModes:
     - ReadWriteOnce
+  storageClassName: ebs-sc
   resources:
     requests:
-      storage: 5Gi
+      storage: 4Gi
 ---
 apiVersion: v1
 kind: Pod
 metadata:
   name: app
   labels:
-    demo: ebs-static
+    demo: ebs-dynamic
 spec:
   containers:
   - name: nginx
@@ -43,12 +28,12 @@ spec:
   volumes:
   - name: nginx-data
     persistentVolumeClaim:
-      claimName: ebs-static
+      claimName: ebs-dynamic
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: ebs-static
+  name: ebs-dynamic
 spec:
   type: LoadBalancer
   selector:
