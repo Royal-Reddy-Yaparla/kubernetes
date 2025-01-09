@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: filebeat-config
+  labels:
+    k8s-app: filebeat
+data:
+  filebeat.yml: |
+    filebeat:
+      config:
+        modules:
+          path: /usr/share/filebeat/modules.d/*.yml
+          reload:
+            enabled: true
+      modules:
+      - module: nginx
+        access:
+          var.paths: ["/var/log/nginx/access.log*"]
+        error:
+          var.paths: ["/var/log/nginx/error.log*"]
+    output:
+      elasticsearch:
+        hosts: ["elasticsearch:9200"]
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+    demo: deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+      demo: deployment
+  template:
+    metadata:
+      labels:
+        app: nginx
+        demo: deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        ports:
+        - containerPort: 80
+        volumeMounts:
+        - name: nginx-logs # name of volume
+          mountPath: /var/log/nginx
+      - name: filebeat-sidecar
+        image: docker.elastic.co/beats/filebeat:7.17.3
+        volumeMounts:
+        - name: nginx-logs # name of volume
+          mountPath: /var/log/nginx
+        - name: filebeat-config
+          mountPath: /usr/share/filebeat/filebeat.yml
+          subPath: filebeat.yml
+
+      volumes:
+      - name: nginx-logs # name of volume
+        emptyDir: {} # create volume which is empty directory
+      - name: filebeat-config
+        configMap:
+            name: filebeat-config
+            items:
+              - key: filebeat.yml
+                path: filebeat.yml
