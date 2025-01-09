@@ -48,7 +48,7 @@ spec:
         - containerPort: 80
         volumeMounts:
         - name: nginx-logs # name of volume
-          mountPath: /var/log/nginx
+          mountPath: /var/log/nginx # mouting same for sidecar for same volume access
       - name: filebeat-sidecar
         image: docker.elastic.co/beats/filebeat:7.17.3
         volumeMounts:
