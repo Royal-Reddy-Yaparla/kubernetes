@@ -24,7 +24,7 @@ spec:
     - name: nginx-data
       mountPath: /usr/share/nginx/html
   nodeSelector:
-    zone: 1b
+    zone: 1d
   volumes:
   - name: nginx-data
     persistentVolumeClaim:
