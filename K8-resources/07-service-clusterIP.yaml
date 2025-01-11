@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: nginx
-  namespace: robokart
+  name: nginx-test
+  # namespace: robokart
   labels:
     name: nginx-service
     app: frontend
@@ -24,7 +24,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: frontend-service
-  namespace: robokart
+  # namespace: robokart
 spec:
   selector:
     name: nginx-service
