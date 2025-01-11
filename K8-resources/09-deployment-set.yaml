@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: robokart
+  # namespace: robokart
   labels: # deployment-set labels
     name: nginx-deployment
     app: frontend
