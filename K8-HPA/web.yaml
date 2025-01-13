@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web
+  namespace: robokart 
+  labels:
+    name: web
+    project: robokart
+    tier: web 
+spec:
+  replicas: 1
+  selector:
+    matchLabels: # should match with pod
+      name: web
+      project: robokart
+      tier: web
+  template: # pod defination
+    metadata:
+      labels: # pod labels
+        name: web
+        project: robokart
+        tier: web
+    spec:
+      containers:
+      - name: web
+        image: iamroyalreddy/web:v1
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "100m"
+          limits:
+            memory: "512Mi"
+            cpu: "300m"       
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: robokart
+spec:
+  type: LoadBalancer # NodePort
+  selector:
+    name: web
+    project: robokart
+    tier: web 
+  ports:
+  - protocol: TCP
+    port: 80 #service-port
+    targetPort: 80 #container-port
