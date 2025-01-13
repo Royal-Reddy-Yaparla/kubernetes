@@ -24,3 +24,20 @@
     ```
         kubectl apply -f aws-auth.yaml
     ```
+    Note: Warning will be, we can igonre
+---
+## Testing 
+- create EC2
+- Login into EC2
+- AWS congfigure with secret and accesskey
+- 
+    ```
+    us-east-1:258860052228:cluster/robokart-dev to /home/ec2-user/.kube/config
+
+    ```
+
+    we can see all update in
+    ```
+     cat .kube/config
+    ```
+    resource: https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
