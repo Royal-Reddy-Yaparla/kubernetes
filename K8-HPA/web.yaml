@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
       - name: web
-        image: iamroyalreddy/web:v1
+        image: nginx:latest
         imagePullPolicy: Always
         resources:
           requests:
