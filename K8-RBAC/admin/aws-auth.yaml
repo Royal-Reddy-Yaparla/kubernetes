@@ -9,7 +9,7 @@ data:
   mapUsers: |
     - groups:
       - robokart-pod-reader
-      userarn: arn:aws:iam::258860052228:user/trainer
+      userarn: arn:aws:iam::258860052228:user/trainee
       username: trainee
 kind: ConfigMap
 metadata:
