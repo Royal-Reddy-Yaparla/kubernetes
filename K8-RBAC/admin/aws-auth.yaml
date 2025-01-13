@@ -10,7 +10,7 @@ data:
     - groups:
       - robokart-pod-reader
       userarn: arn:aws:iam::258860052228:user/admin
-      username: trainee
+      username: admin
 kind: ConfigMap
 metadata:
   name: aws-auth
