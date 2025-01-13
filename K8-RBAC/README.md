@@ -1,4 +1,11 @@
+### RBAC in Kubernetes
 
+Role-Based Access Control (RBAC) in Kubernetes is a method for regulating access to resources within your cluster. By defining roles with specific permissions and assigning those roles to users, RBAC ensures that users have access only to the resources they need, adhering to the principle of least privilege.
+
+*resource*:
+
+https://medium.com/@subhampradhan966/configuring-kubernetes-rbac-a-comprehensive-guide-b6d40ac7b257
+https://medium.com/@muppedaanvesh/a-hand-on-guide-to-kubernetes-rbac-with-a-user-creation-%EF%B8%8F-1ad9aa3cafb1
 
 ### user as trainer , providing describing access 
 
@@ -32,8 +39,7 @@
 - AWS congfigure with secret and accesskey
 - 
     ```
-    us-east-1:258860052228:cluster/robokart-dev to /home/ec2-user/.kube/config
-
+    aws eks update-kubeconfig --region region-code --name my-cluster
     ```
 
     we can see all update in
