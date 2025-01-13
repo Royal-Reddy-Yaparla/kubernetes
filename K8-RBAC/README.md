@@ -41,3 +41,14 @@
      cat .kube/config
     ```
     resource: https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html
+
+
+
+Note:
+Namespaces level
+- role
+- rolebinding
+
+cluster level
+- clusterrole
+- clusterrolebinding
