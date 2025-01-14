@@ -45,7 +45,7 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
-    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test,Project=Roboshop
+    alb.ingress.kubernetes.io/tags: Environment=dev,Team=test,Project=Robokart
     alb.ingress.kubernetes.io/group.name: devopspractice
 spec:
   ingressClassName: alb

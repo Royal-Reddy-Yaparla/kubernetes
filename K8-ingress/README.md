@@ -4,7 +4,7 @@ resource: https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/
 ```
 eksctl utils associate-iam-oidc-provider \
     --region us-east-1 \
-    --cluster robokart \
+    --cluster robokart-dev \
     --approve
 
 ```
@@ -25,10 +25,10 @@ aws iam create-policy \
 Create an IAM role and Kubernetes ServiceAccount for the LBC. Use the ARN from the previous step.
 ```
 eksctl create iamserviceaccount \
---cluster=robokart \
+--cluster=robokart-dev \
 --namespace=kube-system \
 --name=aws-load-balancer-controller \
---attach-policy-arn=arn:aws:iam::<AWS_ACCOUNT_ID>:policy/AWSLoadBalancerControllerIAMPolicy \
+--attach-policy-arn=arn:aws:iam::258860052228:policy/AWSLoadBalancerControllerIAMPolicy \
 --override-existing-serviceaccounts \
 --region us-east-1 \
 --approve
@@ -44,7 +44,7 @@ helm repo add eks https://aws.github.io/eks-charts
 - Helm install command for clusters with IRSA:
 
 ```
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=robokart --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
+helm install aws-load-balancer-controller eks/aws-load-balancer-controller -n kube-system --set clusterName=robokart-dev --set serviceAccount.create=false --set serviceAccount.name=aws-load-balancer-controller
 
 ```
 
