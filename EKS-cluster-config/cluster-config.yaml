@@ -6,7 +6,7 @@ metadata:
   region: us-east-1
 
 managedNodeGroups:
-  - name: spot
+  - name: ondemand
     instanceType: m5.large
     desiredCapacity: 3
-    spot: true
+    # spot: true
