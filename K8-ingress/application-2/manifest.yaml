@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: app2
-        image: iamroyalreddy/app2:v1
+        image: iamroyalreddy/app-2:v1
         imagePullPolicy: Always
         resources:
           requests:

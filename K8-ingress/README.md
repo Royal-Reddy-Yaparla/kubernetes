@@ -1,3 +1,7 @@
+- ec2 full access IAM role attach to Nodes IAM 
+
+
+
 resource: https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/deploy/installation/
 
 - Create an IAM OIDC provider. You can skip this step if you already have one for your cluster.
