@@ -50,7 +50,7 @@ metadata:
 spec:
   ingressClassName: alb
   rules:
-  - host: "app2.royalredd.site"
+  - host: "app2.royalreddy.site"
     http:
       paths:
       - pathType: Prefix
