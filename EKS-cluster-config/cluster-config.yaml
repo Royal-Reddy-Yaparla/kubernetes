@@ -9,4 +9,4 @@ managedNodeGroups:
   - name: ondemand
     instanceType: t3.large
     desiredCapacity: 3
-    # spot: true
+    spot: true
