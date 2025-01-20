@@ -7,6 +7,6 @@ metadata:
 
 managedNodeGroups:
   - name: ondemand
-    instanceType: m5.large
+    instanceType: t3.large
     desiredCapacity: 3
     # spot: true
