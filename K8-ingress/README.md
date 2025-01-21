@@ -63,7 +63,7 @@ sources: https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/e
 ```
 alb.ingress.kubernetes.io/scheme: internet-facing
 alb.ingress.kubernetes.io/target-type: ip
-alb.ingress.kubernetes.io/tags: Environment=dev,Team=test,Project=Roboshop
+alb.ingress.kubernetes.io/tags: Environment=dev,Team=test,Project=Robokart
 
 ```
 
