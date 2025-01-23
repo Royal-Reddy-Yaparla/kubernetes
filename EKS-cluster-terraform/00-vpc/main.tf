@@ -1,4 +1,4 @@
-module "main" {
+module "robokart" {
   source = "git::https://github.com/Royal-Reddy-Yaparla/terraform-vpc-aws-module?ref=main"
   project_name = var.project_name
   environment = var.environment
