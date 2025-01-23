@@ -1,8 +1,8 @@
 resource "aws_s3_bucket" "eks-s3" {
-  bucket = "eks-cluster-s3"
+  bucket = "eks-cluster-robokart-s3"
   force_destroy = true
   tags = {
-    Name        = "eks-cluster-s3"
+    Name        = "eks-cluster-robokart-s3"
   }
 }
 
