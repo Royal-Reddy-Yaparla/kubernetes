@@ -14,7 +14,7 @@ resource "aws_dynamodb_table" "eks-table" {
   hash_key       = "LockID"
 
   attribute {
-    name = "EksID"
+    name = "LockID"
     type = "S"
   }
   
