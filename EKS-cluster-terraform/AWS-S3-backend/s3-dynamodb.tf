@@ -1,17 +1,17 @@
 resource "aws_s3_bucket" "eks-s3" {
-  bucket = "eks-control-plane-s3"
+  bucket = "eks-cluster-s3"
   force_destroy = true
   tags = {
-    Name        = "eksctl-control-plane"
+    Name        = "eks-cluster-s3"
   }
 }
 
 resource "aws_dynamodb_table" "eks-table" {
-  name           = "eks-control-plane-backend"
+  name           = "eks-cluster-backend"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
-  hash_key       = "LockID"
+  hash_key       = "EksID"
 
   attribute {
     name = "EksID"
@@ -19,6 +19,6 @@ resource "aws_dynamodb_table" "eks-table" {
   }
   
   tags = {
-    Name        = "eks-control-plane-backend"
+    Name        = "eks-cluster-backend"
   }
 }
