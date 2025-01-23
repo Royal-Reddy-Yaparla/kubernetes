@@ -5,9 +5,9 @@ terraform {
       version = "5.82.2"
     }
   }
-  backend "s3" {
-    bucket = "eksctl-practice"
-    key    = "EksID"
+    backend "s3" {
+    bucket = "eks-control-plane-s3"
+    key    = "LockID"
     region = "us-east-1"
   }
 }
