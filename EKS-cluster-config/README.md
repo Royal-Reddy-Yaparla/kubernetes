@@ -65,6 +65,8 @@ You're absolutely correct! 🎯
 #### **1. Create the Cluster**
 To create the EKS cluster using this configuration file:
 
+eksctl is the tool , which made by AWS , to create kubernetes cluster in AWS 
+
 ```bash
 eksctl create cluster -f cluster-config.yaml
 ```
