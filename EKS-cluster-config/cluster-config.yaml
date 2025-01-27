@@ -9,4 +9,4 @@ managedNodeGroups: # here nodes managed by AWS, if we use 'nodeGroups' we need t
   - name: spot
     instanceType: t3.large
     desiredCapacity: 3
-    spot: true
+    spot: true # not for production

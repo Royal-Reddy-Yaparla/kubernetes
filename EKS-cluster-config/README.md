@@ -84,3 +84,8 @@ eksctl delete cluster -f cluster-config.yaml
 - This will remove the cluster, node group, and associated infrastructure in AWS.
 
 ---
+
+Resources: 
+- https://eksctl.io/installation/
+- https://github.com/eksctl-io/eksctl/tree/main/examples
+- https://kubernetes.io/docs/tasks/tools/
