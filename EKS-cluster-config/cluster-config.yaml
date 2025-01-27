@@ -5,7 +5,7 @@ metadata:
   name: robokart-development
   region: us-east-1
 
-managedNodeGroups:
+managedNodeGroups: # here nodes managed by AWS, if we use 'nodeGroups' we need to take care of it
   - name: spot
     instanceType: t3.large
     desiredCapacity: 3
