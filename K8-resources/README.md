@@ -649,6 +649,17 @@ The primary difference between **ConfigMaps** and **Secrets** in Kubernetes lies
 
 ---
 ---
+### Labels and annotaions
+- Labels are used to attach identifying metadata to Kubernetes resources. They are designed to be used programmatically for grouping, filtering, and selecting resources.
+
+- labels are used to select other kubernetes resources
+ex: Labels are also used to tie resources like Deployment and Pods it’s managing
+
+- they can be used to store detailed information like configurations, URLs, or descriptions. It’s also used by tools or systems for operational purposes, e.g. ingress controller or monitoring tools.
+
+- annotaions are used to select external resources to kubernetes.
+
+
 ### Services
 A Service in Kubernetes is an abstraction that provides a stable network endpoint to access a set of Pods. Since Pods are ephemeral and can be replaced frequently, their IP addresses may change
 
