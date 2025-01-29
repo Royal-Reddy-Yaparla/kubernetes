@@ -6,6 +6,7 @@ metadata:
   labels:
     environment: dev 
     app: frontend
+    managed: royal
   annotations:
     description: "this pod sevice for frontend"
     maintainer: "devops@organization.com"
