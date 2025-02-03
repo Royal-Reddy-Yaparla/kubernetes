@@ -37,6 +37,7 @@ metadata:
   name: frontend-service
   namespace: robokart
 spec:
+  type: LoadBalancer
   selector:
     name: nginx
     app: frontend
