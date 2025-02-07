@@ -4,7 +4,7 @@ variable "cidr_block" {
 
 variable "common_tags" {
   default = {
-    project_name = "robokart"
+    project_name = "robokart-eks"
     environment = "dev"
     terraform = true
   }
@@ -17,7 +17,7 @@ variable "igt_tags" {
   default = {}
 }
 variable "project_name" {
-  default = "robokart"
+  default = "robokart-eks"
 }
 variable "environment" {
   default = "dev"
@@ -36,7 +36,7 @@ variable "cidr_database" {
 }
 
 variable "is_peering_required" {
-  default = false
+  default = true
 }
 
 variable "accepters_vpc_id" {
