@@ -1,4 +1,4 @@
-resource "aws_vpc" "main" {
+resource "aws_vpc" "vpc" {
   cidr_block = var.cidr_block
   # refer to instances by their hostname instead of their IP address
   enable_dns_hostnames = var.enable_dns_hostnames
@@ -12,7 +12,7 @@ resource "aws_vpc" "main" {
 }
 
 resource "aws_internet_gateway" "igt" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc.id
   tags = merge(
     var.common_tags,
     var.igt_tags,
@@ -24,7 +24,7 @@ resource "aws_internet_gateway" "igt" {
 
 resource "aws_subnet" "public" {
     count = length(var.cidr_public)
-    vpc_id = aws_vpc.main.id
+    vpc_id = aws_vpc.vpc.id
     cidr_block = var.cidr_public[count.index]
     map_public_ip_on_launch = true
     availability_zone = var.availability_zones[count.index]
@@ -38,7 +38,7 @@ resource "aws_subnet" "public" {
 }
 
 resource "aws_route_table" "public" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
@@ -64,7 +64,7 @@ resource "aws_route_table_association" "public_route" {
 
 
 resource "aws_eip" "eip" {
-  domain   = "vpc"
+  vpc   = "vpc"
 }
 
 resource "aws_nat_gateway" "nat" {
@@ -86,7 +86,7 @@ resource "aws_nat_gateway" "nat" {
 
 resource "aws_subnet" "private" {
     count = length(var.cidr_private)
-    vpc_id = aws_vpc.main.id
+    vpc_id = aws_vpc.vpc.id
     cidr_block = var.cidr_private[count.index]
 
     availability_zone = var.availability_zones[count.index]
@@ -101,7 +101,7 @@ resource "aws_subnet" "private" {
 
 # resource "aws_subnet" "database" {
 #     count = length(var.cidr_database)
-#     vpc_id = aws_vpc.main.id
+#     vpc_id = aws_vpc.vpc.id
 #     cidr_block = var.cidr_database[count.index]
 
 #     availability_zone = var.availability_zones[count.index]
@@ -115,7 +115,7 @@ resource "aws_subnet" "private" {
 # }
 
 resource "aws_route_table" "private" {
-  vpc_id = aws_vpc.main.id
+  vpc_id = aws_vpc.vpc.id
 
   route {
     cidr_block = "0.0.0.0/0"
