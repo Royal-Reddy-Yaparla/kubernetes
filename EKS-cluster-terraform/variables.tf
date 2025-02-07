@@ -42,3 +42,39 @@ variable "is_peering_required" {
 variable "accepters_vpc_id" {
   default = ""
 }
+
+variable "cluster_name" {
+  description = "Name of the EKS cluster"
+  type        = string
+  default     = "my-eks-cluster"
+}
+
+variable "cluster_version" {
+  description = "Kubernetes version"
+  type        = string
+  default     = "1.30"
+}
+
+variable "node_groups" {
+  description = "EKS node group configuration"
+  type = map(object({
+    instance_types = list(string)
+    capacity_type  = string
+    scaling_config = object({
+      desired_size = number
+      max_size     = number
+      min_size     = number
+    })
+  }))
+  default = {
+    general = {
+      instance_types = ["t3.medium"]
+      capacity_type  = "ON_DEMAND"
+      scaling_config = {
+        desired_size = 2
+        max_size     = 4
+        min_size     = 1
+      }
+    }
+  }
+}
