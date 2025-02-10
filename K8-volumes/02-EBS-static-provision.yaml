@@ -17,7 +17,8 @@ kind: PersistentVolumeClaim
 metadata:
   name: ebs-static
 spec:
-  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set. for static provisioning this is empty
+  storageClassName: "" # Empty string must be explicitly set otherwise default StorageClass will be set. 
+  # for static provisioning this is empty
   volumeName: ebs-static
   accessModes:
     - ReadWriteOnce
@@ -39,7 +40,7 @@ spec:
     - name: nginx-data
       mountPath: /usr/share/nginx/html
   nodeSelector:
-    zone: 1b
+    zone: 1b # node selector specify node location the pod.
   volumes:
   - name: nginx-data
     persistentVolumeClaim:
