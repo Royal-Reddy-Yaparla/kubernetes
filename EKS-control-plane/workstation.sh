@@ -55,13 +55,6 @@ VALIDATE $? "Installed yum utils"
 sudo yum install -y git
 VALIDATE $? "Installed yum git"
 
-# terraform
-sudo yum install -y yum-utils
-sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-sudo yum -y install terraform
-VALIDATE $? "Installed yum git"
-
-
 # docker
 sudo yum install -y docker
 VALIDATE $? "Installed docker components"
@@ -91,7 +84,7 @@ VALIDATE $? "Kubectl installation"
 
 # eksctl
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
-sudo tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
+tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 sudo mv /tmp/eksctl /usr/local/bin
 VALIDATE $? "eksctl installation"
 
@@ -124,3 +117,8 @@ VALIDATE $? "kubens installation"
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 VALIDATE $? "metrics installation"
 
+# terraform
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
+VALIDATE $? "Installed yum git"
