@@ -10,7 +10,7 @@ spec:
   csi:
     driver: ebs.csi.aws.com
     fsType: ext4
-    volumeHandle: vol-095b046ae862ee1ff # AWS EBS volume ID
+    volumeHandle: vol-02d4add843010f3e6 # AWS EBS volume ID
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -40,7 +40,7 @@ spec:
     - name: nginx-data
       mountPath: /usr/share/nginx/html
   nodeSelector:
-    zone: 1b # node selector specify node location the pod.
+    zone: 1f # node selector specify node location the pod.
   volumes:
   - name: nginx-data
     persistentVolumeClaim:
