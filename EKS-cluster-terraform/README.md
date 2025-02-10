@@ -92,7 +92,7 @@ terraform destroy -auto-approve
 | `cidr_block`         | string | `"10.0.0.0/16"`    | CIDR block for the VPC.                         |
 | `cidr_public`        | list   | `["10.0.1.0/24", "10.0.2.0/24"]` | Public subnet CIDR ranges. |
 | `cidr_private`       | list   | `["10.0.11.0/24", "10.0.12.0/24"]` | Private subnet CIDR ranges. |
-| `is_peering_required` | bool   | `true`              | Whether VPC peering is required.                |
+| `is_peering_required` | bool   | `false`              | Whether VPC peering is required.                |
 | `accepters_vpc_id`   | string | `""`                | VPC ID for peering connection.                  |
 
 ### **Node Group Configuration**
@@ -137,7 +137,7 @@ terraform {
 ```
 
 ---
-### ** Connect to EKS Cluster**
+### Connect to EKS Cluster
 ```sh
 aws eks update-kubeconfig --name robokart --region <your-region>
 ```
