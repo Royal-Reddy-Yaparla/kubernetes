@@ -17,7 +17,7 @@ variable "igt_tags" {
   default = {}
 }
 variable "project_name" {
-  default = "robokart-eks"
+  default = "robokart-eks"  
 }
 variable "environment" {
   default = "dev"
@@ -55,6 +55,7 @@ variable "node_groups" {
   description = "EKS node group configuration"
   type = map(object({
     instance_types = list(string)
+    node_group_name = string
     capacity_type  = string
     scaling_config = object({
       desired_size = number
@@ -66,10 +67,11 @@ variable "node_groups" {
     general = {
       instance_types = ["t3.medium"]
       capacity_type  = "SPOT"
+      node_group_name = "robokart-node"
       scaling_config = {
-        desired_size = 2
+        desired_size = 3
         max_size     = 4
-        min_size     = 2
+        min_size     = 3
       }
     }
   }
