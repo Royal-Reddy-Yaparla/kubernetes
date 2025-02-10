@@ -38,10 +38,6 @@ variable "private_subnet_tags" {
   default = {}
 }
 
-variable "database_subnet_tags" {
-  default = {}
-}
-
 variable "public_route_table_tags" {
   default = {}
 }
@@ -62,9 +58,6 @@ variable "cidr_private" {
   type = list
 }
 
-variable "cidr_database" {
-  type = list
-}
 
 variable "project_name" {
   type = string

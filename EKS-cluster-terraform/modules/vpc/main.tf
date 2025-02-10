@@ -64,7 +64,7 @@ resource "aws_route_table_association" "public_route" {
 
 
 resource "aws_eip" "eip" {
-  vpc   = "vpc"
+  domain   = "vpc"
 }
 
 resource "aws_nat_gateway" "nat" {
@@ -99,20 +99,6 @@ resource "aws_subnet" "private" {
   )
 }
 
-# resource "aws_subnet" "database" {
-#     count = length(var.cidr_database)
-#     vpc_id = aws_vpc.vpc.id
-#     cidr_block = var.cidr_database[count.index]
-
-#     availability_zone = var.availability_zones[count.index]
-#     tags = merge(
-#     var.common_tags,
-#     var.database_subnet_tags,
-#     {
-#         Name = "${local.name}-database-${var.availability_zones[count.index]}"
-#    }
-#   )
-# }
 
 resource "aws_route_table" "private" {
   vpc_id = aws_vpc.vpc.id
@@ -138,11 +124,3 @@ resource "aws_route_table_association" "private_route" {
   route_table_id = aws_route_table.private.id
 }  
 
-
-# resource "aws_route_table_association" "database_route" {
-#   count = length(var.cidr_database)
-# #   subnet_id      = aws_subnet.database[count.index].id
-#   subnet_id      = element(aws_subnet.database[*].id, count.index)
-  
-#   route_table_id = aws_route_table.private.id
-# }  

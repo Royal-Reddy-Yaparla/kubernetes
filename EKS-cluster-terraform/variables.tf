@@ -31,10 +31,6 @@ variable "cidr_private" {
   default = ["10.0.11.0/24","10.0.12.0/24"]
 }
 
-variable "cidr_database" {
-  default = ["10.0.21.0/24","10.0.22.0/24"]
-}
-
 variable "is_peering_required" {
   default = true
 }
@@ -46,7 +42,7 @@ variable "accepters_vpc_id" {
 variable "cluster_name" {
   description = "Name of the EKS cluster"
   type        = string
-  default     = "my-eks-cluster"
+  default     = "robokart"
 }
 
 variable "cluster_version" {
@@ -69,11 +65,11 @@ variable "node_groups" {
   default = {
     general = {
       instance_types = ["t3.medium"]
-      capacity_type  = "ON_DEMAND"
+      capacity_type  = "SPOT"
       scaling_config = {
         desired_size = 2
         max_size     = 4
-        min_size     = 1
+        min_size     = 2
       }
     }
   }
