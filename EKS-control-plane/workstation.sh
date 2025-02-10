@@ -2,7 +2,7 @@
 
 ###############################################
 # Author: ROYAL REDDY
-# Version: V2
+# Version: V3
 # Purpose: installation of
     #   utils,
     #   git,
@@ -12,6 +12,7 @@
     #   aws-ebs-csi-driver
     #   K9s,kubens
     #   metrics server
+    #   terraform
 ################################################
 
 ID=$(id -u)
@@ -54,6 +55,13 @@ VALIDATE $? "Installed yum utils"
 sudo yum install -y git
 VALIDATE $? "Installed yum git"
 
+# terraform
+sudo yum install -y yum-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+sudo yum -y install terraform
+VALIDATE $? "Installed yum git"
+
+
 # docker
 sudo yum install -y docker
 VALIDATE $? "Installed docker components"
@@ -91,7 +99,7 @@ VALIDATE $? "eksctl installation"
 curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
 chmod 700 get_helm.sh
 ./get_helm.sh
-VALIDATE $? "helm installation"
+VALIDATE $? "helm installation" 
 
 # k9s
 curl -sS https://webinstall.dev/k9s | bash

@@ -6,8 +6,8 @@ terraform {
     }
   }
   backend "s3" {
-    bucket = "eks-control-plane-s3"
-    key    = "LockID"
+    bucket = "robokart-eks-master-backend"
+    key    = "MsID"
     region = "us-east-1"
   }
 }

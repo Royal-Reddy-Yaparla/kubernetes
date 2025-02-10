@@ -2,12 +2,12 @@ resource "aws_s3_bucket" "eks-s3" {
   bucket = "eks-control-plane-s3"
   force_destroy = true
   tags = {
-    Name        = "eksctl-control-plane"
+    Name        = "robokart-eks-cluster-backend" # must be unique
   }
 }
 
 resource "aws_dynamodb_table" "eks-table" {
-  name           = "eks-control-plane-backend"
+  name           = "robokart-eks-cluster-backend"
   billing_mode   = "PROVISIONED"
   read_capacity  = 20
   write_capacity = 20
@@ -19,6 +19,6 @@ resource "aws_dynamodb_table" "eks-table" {
   }
   
   tags = {
-    Name        = "eks-control-plane-backend"
+    Name        = "eks-cluster-backend"
   }
 }
