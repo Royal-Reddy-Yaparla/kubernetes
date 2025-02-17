@@ -8,3 +8,11 @@ spec:
     image: nginx:1.14.2
     ports:
     - containerPort: 80
+tolerations:
+  - key: "project"
+    operator: "Exists"
+    effect: "NoSchedule"
+  # - key: "project"
+  #   operator: "Equal"
+  #   value: "robokart"
+  #   effect: "NoSchedule"
