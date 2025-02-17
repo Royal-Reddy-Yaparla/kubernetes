@@ -199,7 +199,7 @@ A DevOps team manages a shared Kubernetes cluster across multiple teams:
 - Prevents cross-team interference.  
 - Teams have isolated environments while sharing the cluster infrastructure.  
 
-**⚙️ Real-Time Example:**  
+**Real-Time Example:**  
 - In an **EduTech platform**, Team A handles **student data** while Team B manages **AI recommendations**.  
 
 **Business Impact:**  
@@ -248,9 +248,9 @@ AWS spot instances are cheaper but less reliable.
 
 ---
 
-## 🌱 **Advanced Tips for Taints & Tolerations**
+## **Advanced Tips for Taints & Tolerations**
 
-### 1️⃣ **Combining with Node Affinity:**  
+### **Combining with Node Affinity:**  
 Use **nodeAffinity** alongside taints for granular control.  
 ```yaml
 nodeAffinity:
@@ -263,18 +263,18 @@ nodeAffinity:
               - critical
 ```
 
-### 2️⃣ **Monitoring Taints:**  
+### **Monitoring Taints:**  
 Regularly audit taints using:  
 ```bash
 kubectl describe nodes | grep -i taint
 ```
 
-### 3️⃣ **Dynamic Scaling with Taints:**  
+### **Dynamic Scaling with Taints:**  
 Automatically taint new nodes in an **auto-scaling group** for workload-specific requirements.
 
 ---
 
-## 🎯 **Interview Trick Questions**
+## **Interview Trick Questions**
 
 ### 1. **What happens if a pod doesn't have a toleration for a `NoExecute` taint?**  
 **Answer:** The pod will be immediately evicted from the node.  
