@@ -290,3 +290,7 @@ Automatically taint new nodes in an **auto-scaling group** for workload-specific
 - **Node affinity** acts as **preferences** on the pod side.  
 
 ---
+
+soruce: 
+
+- https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/
