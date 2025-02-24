@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: robokart-dev
+  name: fusion-dev
   region: us-east-1
 
 managedNodeGroups: # here nodes managed by AWS, if we use 'nodeGroups' we need to take care of it
