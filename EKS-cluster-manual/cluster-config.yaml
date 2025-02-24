@@ -10,4 +10,3 @@ managedNodeGroups: # here nodes managed by AWS, if we use 'nodeGroups' we need t
     instanceType: t3.large
     desiredCapacity: 2
     spot: true # not for production
-    availabilityZones: ["us-east-1a"]
