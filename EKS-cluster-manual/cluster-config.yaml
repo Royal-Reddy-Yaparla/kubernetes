@@ -2,7 +2,7 @@ apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: robokart-development
+  name: robokart
   region: us-east-1
 
 managedNodeGroups: # here nodes managed by AWS, if we use 'nodeGroups' we need to take care of it
@@ -10,3 +10,4 @@ managedNodeGroups: # here nodes managed by AWS, if we use 'nodeGroups' we need t
     instanceType: t3.large
     desiredCapacity: 2
     spot: true # not for production
+    availabilityZones: ["us-east-1a"]
