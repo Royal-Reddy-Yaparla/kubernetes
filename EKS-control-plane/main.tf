@@ -1,9 +1,9 @@
 resource "aws_instance" "workstation" {
-  ami           = "ami-01816d07b1128cd2d"
-  instance_type = "t2.medium"
-  key_name      = aws_key_pair.key_pair.key_name
+  ami                    = "ami-01816d07b1128cd2d"
+  instance_type          = "t2.medium"
+  key_name               = aws_key_pair.key_pair.key_name
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
-  user_data = file("workstation.sh")
+  user_data              = file("workstation.sh")
   tags = {
     Name = "workstation"
   }
