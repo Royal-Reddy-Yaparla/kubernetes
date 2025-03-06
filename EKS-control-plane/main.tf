@@ -36,7 +36,7 @@ resource "aws_security_group" "allow_tls" {
   vpc_id      = aws_default_vpc.default.id
 
   tags = {
-    Name = "allow_tls"
+    Name = "eks"
   }
 }
 
